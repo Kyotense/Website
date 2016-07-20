@@ -1,0 +1,11 @@
+{% if products %}
+    <ul>
+    {% for question in products %}
+    	{% with question.productimage_set.all|first as image %}
+        <img src="{{ image.image.url }}" width=400/>
+        {% endwith %} 
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
