@@ -44,3 +44,5 @@ Scripts
 
 #venv
 VirtualEnvironment
+
+*.sqlite3
