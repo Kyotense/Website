@@ -44,5 +44,49 @@
   "product": 2,
   "image": "shop/posz.jpg"
  }
+},
+{
+ "model": "shop.product",
+ "pk": 5,
+ "fields": {
+  "company": 1,
+  "description": "Some game.",
+  "pub_date": "2016-07-20T17:49:25Z",
+  "name": "Monoply",
+  "price": 100.0
+ }
+},
+{
+ "model": "shop.product",
+ "pk": 6,
+ "fields": {
+  "company": 1,
+  "description": "Some game.",
+  "pub_date": "2016-07-20T17:49:25Z",
+  "name": "Shoots and Ladders",
+  "price": 100.0
+ }
+},
+{
+ "model": "shop.product",
+ "pk": 7,
+ "fields": {
+  "company": 1,
+  "description": "Some game.",
+  "pub_date": "2016-07-20T17:49:25Z",
+  "name": "Uno",
+  "price": 100.0
+ }
+},
+{
+ "model": "shop.product",
+ "pk": 8,
+ "fields": {
+  "company": 1,
+  "description": "Some game.",
+  "pub_date": "2016-07-20T17:49:25Z",
+  "name": "Candyland",
+  "price": 100.0
+ }
 }
 ]
