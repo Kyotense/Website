@@ -12,11 +12,19 @@
 
 
 ul.pagination
-{
-	color: white;	
+{	
 	text-align: center;
+	
 }
-ul span
+
+ul.pagination a
 {
-	background-color: #FFF;
+	background-color: #000;
+	color:white;
+	padding: 7px 8px;
+    text-decoration: none;
+}
+
+ul.pagination a:hover{
+    background-color:#333;
 }

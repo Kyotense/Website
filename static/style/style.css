@@ -8,11 +8,12 @@ ul.mainbar {
 
 
 
-li{
-    float: right;
+li.bartext{
+    float:right;
 }
 
-.logo{
+
+li.logo{
     float:left;
 }
 
