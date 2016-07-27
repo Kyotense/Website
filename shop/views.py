@@ -15,6 +15,7 @@ class IndexView(generic.ListView):
     order = ["company","description","pub_date","name","price","company__company_name"]
 
     def pages(self):
+    	"""Returns the maximum possible number of pages."""
     	return int(len(Product.objects.all())/6) + 1
     def get_queryset(self):
         """Return the last sixteen published questions."""
@@ -24,7 +25,7 @@ class IndexView(generic.ListView):
         start = 0
         end = 6
 
-        # ?browse = whatever
+        # www.google.com/something/blah/?order_by=whatever
         if self.request.GET.get("order_by"):
         	order_by = (self.request.GET.get("order_by"))
 

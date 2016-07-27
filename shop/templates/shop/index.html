@@ -33,8 +33,12 @@ apples are amazing... {{ view.pages }}
 </div>
 </nav>
 
+<div class ="pagination">
+<ul class="pagination">
 {% for i in view.pages|get_range %}
-<a href="?page={{i}}" > {{i}} </a>
+<a href="?page={{i}}" >{{i}} </a> 
 {% endfor %}
+</ul>
 
+</div>
 {% endblock %}

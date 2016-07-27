@@ -5,6 +5,7 @@ register = template.Library()
 @register.filter
 def get_range( value ):
   """
+  	Got from https://djangosnippets.org/snippets/1357/
     Filter - returns a list containing range made from given value
     Usage (in template):
 

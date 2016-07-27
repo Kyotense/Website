@@ -11,3 +11,12 @@
 }
 
 
+ul.pagination
+{
+	color: white;	
+	text-align: center;
+}
+ul span
+{
+	background-color: #FFF;
+}
