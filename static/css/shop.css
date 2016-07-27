@@ -1,0 +1,22 @@
+#mytestid
+{
+	color: red;
+	text-align: center;
+}
+
+.products
+{
+	display: flex; /* or inline-flex */
+	flex-wrap: wrap;
+}
+
+
+ul.pagination
+{
+	color: white;	
+	text-align: center;
+}
+ul span
+{
+	background-color: #FFF;
+}

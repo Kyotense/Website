@@ -1,20 +1,22 @@
+{% load staticfiles %}
 <html>
     <head>
-        <link rel = "stylesheet" type = "text/css" href = "style/style.css">
+        <link rel = "stylesheet" type = "text/css" href = '{% static "style/style.css" %}'>
     </head>
     <body>
         <nav>
-             <ul>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="javascript:void(0)" class = "dropbtn" onclick= "drpdwn()">Product</a>
-                    <div class = "dropdown-content" id = "myDropdown">
+             <ul class="mainbar">
+                <li><a href="/about/">About Us</a></li>
+                <li><a href="/shop/" class = "dropbtn" >Product</a>
+                <!-- onclick= "drpdwn()"    
+                <div class = "dropdown-content" id = "myDropdown">
                         <a href="sales.html">Link 1</a>
                         <a href="#">Link 2</a>
                         <a href="#">Link 3</a>
-                    </div>
-                    </li>
-                <li><a href="index.html">Home</a></li>
-                <li class="logo"><a href="index.html"><img src= "images/logo.png" alt="logo" height = "20"/></a></li>
+                    </div> -->
+                    </li> 
+                <li><a href="/">Home</a></li>
+                <li class="logo"><a href="/"><img src= "{% static 'images/logo.png' %}" alt="logo" height = "20"/></a></li>
             </ul>
             <script>
                 function drpdwn(){
@@ -35,7 +37,7 @@
             </script>
         </nav>
         <main>
-            About
+            {% block main %} Home {% endblock %}
         </main>
     </body>
 </html>
