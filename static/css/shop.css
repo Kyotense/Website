@@ -11,13 +11,15 @@
 }
 
 
-ul.pagination
+.pagination
 {	
-	text-align: center;
-	
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px;
 }
 
-ul.pagination a
+a.pagelink
 {
 	background-color: #000;
 	color:white;
@@ -25,6 +27,27 @@ ul.pagination a
     text-decoration: none;
 }
 
-ul.pagination a:hover{
+div.pagination a:hover{
     background-color:#333;
 }
+
+.arrow-right 
+{
+	width: 20px;
+	height: 20px;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid green;
+	text-decoration: none;
+}
+
+.arrow-left 
+{
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 10px solid green;
+	
+}
+

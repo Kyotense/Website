@@ -8,8 +8,8 @@ from django.utils import timezone
 from .models import Product
 
 # a generic class provided by the first django tutorial
-class IndexView(generic.ListView):
-    template_name = 'shop/index.html'
+class ShopView(generic.ListView):
+    template_name = 'shop/shop.html'
     context_object_name = 'products'
     model = Product
     order = ["company","description","pub_date","name","price","company__company_name"]
@@ -18,7 +18,7 @@ class IndexView(generic.ListView):
     	"""Returns the maximum possible number of pages."""
     	return int(len(Product.objects.all())/6) + 1
     def get_queryset(self):
-        """Return the last sixteen published questions."""
+        """Change me"""
 
         order_by = "pub_date"
 
