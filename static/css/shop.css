@@ -48,6 +48,13 @@ div.pagination a:hover{
 	border-top: 10px solid transparent;
 	border-bottom: 10px solid transparent;
 	border-right: 10px solid green;
-	
+}
+
+.pagelink-disabled
+{
+	background-color: #000;
+	color:gray;
+	padding: 7px 8px;
+    text-decoration: none;
 }
 

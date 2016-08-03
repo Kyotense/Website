@@ -5,9 +5,11 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static "css/shop.css" %}" />
 
+<!--
 <div id="mytestid">
 apples are amazing... {{ view.pages }}
 </div>
+-->
 
 <nav class="product-filter">
 <div id="shopcontent" class="products">
@@ -17,29 +19,42 @@ apples are amazing... {{ view.pages }}
     <div class="product">
         <!-- Just grabing the first product here  -->
     	{% with product.productimage_set.all|first as image %}
-        <img src="{{ image.image.url }}" width=400/>
+        <a href="{%url 'shop:productview' product.id %}"><img src="{{ image.image.url }}" width=400/> </a>
         {% endwith %}
         <h5>{{product.name}}</h5>
         <h6>{{product.description}}</h6>
         <h6>{{product.price}}$</h6>
+        {{product.id}}
         <button type="button">Add to Cart</button> 
     </div>
     {% endfor %}
 
 {% else %}
-    <p>No polls are available.</p>
+    <p>No content on this page.</p>
 {% endif %}
 
 </div>
 </nav>
 
 <div class="pagination">
-
-<a class="pagelink" >&#10094; </a>
-{% for i in view.pages|get_range %}
-<a href="?page={{i}}" class="pagelink" >{{i}} </a> 
+<a class="pagelink" href="?page={{view.first}}">First </a>
+{% if view.current != 1%}
+<a class="pagelink" href="?page={{ view.previous }}">&#10094; </a>
+{% else %}
+<a class="pagelink-disabled" >&#10094; </a>
+{% endif %}
+{% for i in view.pagination %}
+{%if i != view.current %}
+<a href="?page={{i}}" class="pagelink" >{{i}} </a>
+{% else %}
+<a class="pagelink-disabled" >{{i}} </a> 
+{% endif %}
 {% endfor %}
-<a class="pagelink">&#10095;</a>
-
+{% if view.current != view.pages%}
+<a class="pagelink" href="?page={{view.next}}">&#10095; </a>
+{% else %}
+<a class="pagelink-disabled" >&#10095; </a>
+{% endif %}
+<a class="pagelink" href="?page={{view.last}}">Last</a>
 </div>
 {% endblock %}
