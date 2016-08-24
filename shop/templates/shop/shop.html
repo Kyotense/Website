@@ -3,7 +3,7 @@
 
 {% block main %}
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "css/shop.css" %}" />
+
 
 <!--
 <div id="mytestid">
@@ -24,7 +24,6 @@ apples are amazing... {{ view.pages }}
         <h5>{{product.name}}</h5>
         <h6>{{product.description}}</h6>
         <h6>{{product.price}}$</h6>
-        {{product.id}}
         <button type="button">Add to Cart</button> 
     </div>
     {% endfor %}
@@ -37,12 +36,18 @@ apples are amazing... {{ view.pages }}
 </nav>
 
 <div class="pagination">
-<a class="pagelink" href="?page={{view.first}}">First </a>
+
 {% if view.current != 1%}
 <a class="pagelink" href="?page={{ view.previous }}">&#10094; </a>
 {% else %}
 <a class="pagelink-disabled" >&#10094; </a>
 {% endif %}
+
+{% if not view.first in view.pagination %}
+<a class="pagelink" href="?page={{view.first}}">{{view.first}} </a>
+<a class="pagelink-disabled" >... </a>
+{% endif %}
+
 {% for i in view.pagination %}
 {%if i != view.current %}
 <a href="?page={{i}}" class="pagelink" >{{i}} </a>
@@ -50,11 +55,21 @@ apples are amazing... {{ view.pages }}
 <a class="pagelink-disabled" >{{i}} </a> 
 {% endif %}
 {% endfor %}
+
+{% if view.last in view.pagination %}
+
+{% else %}
+<a class="pagelink-disabled" >... </a>
+<a class="pagelink" href="?page={{view.last}}">{{view.last}} </a>
+{% endif %}
+
 {% if view.current != view.pages%}
 <a class="pagelink" href="?page={{view.next}}">&#10095; </a>
 {% else %}
 <a class="pagelink-disabled" >&#10095; </a>
 {% endif %}
-<a class="pagelink" href="?page={{view.last}}">Last</a>
+
+
+
 </div>
 {% endblock %}

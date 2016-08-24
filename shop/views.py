@@ -7,14 +7,17 @@ from django.utils import timezone
 
 from .models import Product
 
-# a generic class provided by the first django tutorial
 class ShopView(generic.ListView):
+    '''
+      Class name: ShopView
+      Descritpion: This class is responsible for handing all shop interactions.
+    '''
     template_name = 'shop/shop.html'
     context_object_name = 'products'
     model = Product
     order = ["company","description","pub_date","name","price","company__company_name"]
-    limit = 2
-    numitems = 3
+    limit = 4 # number of items on the page bar
+    numitems = 6 # number of items to throw on the page
     def pages(self):
       """Returns the maximum possible number of pages."""
       return int(len(Product.objects.all())/self.numitems) + 1
@@ -80,11 +83,12 @@ class ShopView(generic.ListView):
       	# urls view can be used for args and kwargs...
         #print (self.username)
         return Product.objects.order_by(order_by)[start:end] #filter(pub_date__lte=timezone.now())
+
 class ProductView(generic.DetailView):
   context_object_name = "product"
   template_name = 'shop/productdetail.html'
   def get_queryset(self):
-    print self.args
+    #print self.args
     return Product.objects
 
 '''def get_product(request,product_id):
@@ -104,3 +108,20 @@ class ProductView(generic.DetailView):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('shop:product_listing', args=(product.id,)))'''
+class ShopIndexView(ShopView):
+  context_object_name = "product"
+  template_name = 'shop/index.html'
+
+  def firstitem(self):
+    order_by = "pub_date"
+    return Product.objects.order_by(order_by)[0]
+  def carousel(self):
+    order_by = "pub_date"
+    return Product.objects.order_by(order_by)[1:5]
+    
+  def get_queryset(self):
+    return Product.objects
+
+  def nextten(self):
+    #print (len(Product.objects.order_by("pub_date")[5:16]))
+    return Product.objects.order_by("pub_date")[5:16]
