@@ -15,7 +15,7 @@
   "description": "Apple man",
   "pub_date": "2016-07-19T07:06:02Z",
   "name": "Appleness",
-  "price": 11.1
+  "price": 11.10
  }
 },
 {
@@ -26,7 +26,7 @@
   "description": "The apple of my eye.",
   "pub_date": "2016-07-20T17:49:25Z",
   "name": "The Kraken",
-  "price": 100.0
+  "price": 10.00
  }
 },
 {
@@ -53,7 +53,7 @@
   "description": "Some game.",
   "pub_date": "2016-07-20T17:49:25Z",
   "name": "Monoply",
-  "price": 100.0
+  "price": 10.00
  }
 },
 {
@@ -64,7 +64,7 @@
   "description": "Some game.",
   "pub_date": "2016-07-20T17:49:25Z",
   "name": "Shoots and Ladders",
-  "price": 100.0
+  "price": 10.0
  }
 },
 {
@@ -75,7 +75,7 @@
   "description": "Some game.",
   "pub_date": "2016-07-20T17:49:25Z",
   "name": "Uno",
-  "price": 100.0
+  "price": 10.00
  }
 },
 {
@@ -86,7 +86,7 @@
   "description": "Some game.",
   "pub_date": "2016-07-20T17:49:25Z",
   "name": "Candyland",
-  "price": 100.0
+  "price": 10.00
  }
 }
 ]

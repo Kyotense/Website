@@ -10,7 +10,13 @@
 apples are amazing... {{ view.pages }}
 </div>
 -->
-
+{% if categories %}
+    <select>
+    {% for category in categories %}
+        <option value="{{category}}"> {{category}}</option>
+    {% endfor %}
+    </select>
+{% endif %}
 <nav class="product-filter">
 <div id="shopcontent" class="products">
 {% if products %}
@@ -19,7 +25,7 @@ apples are amazing... {{ view.pages }}
     <div class="product">
         <!-- Just grabing the first product here  -->
     	{% with product.productimage_set.all|first as image %}
-        <a href="{%url 'shop:productview' product.id %}"><img src="{{ image.image.url }}" width=400/> </a>
+        <a href="{%url 'shop:productview' product.id %}"><img src="{{ image.image.url }}" width="400" height="400"/> </a>
         {% endwith %}
         <h5>{{product.name}}</h5>
         <h6>{{product.description}}</h6>

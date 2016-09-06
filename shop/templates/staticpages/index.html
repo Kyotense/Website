@@ -1,48 +1,41 @@
 {% load staticfiles %}
+<!DOCTYPE html>
 <html>
     <head>
-        <link rel = "stylesheet" type = "text/css" href = '{% static "style/style.css" %}'>
+        <link rel="stylesheet" type="text/css" href="{% static "css/shop.css" %}" />
+        <link rel="stylesheet" type="text/css" href = '{% static "style/style.css" %}'>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="{% static "css/shop.css" %}" />
+        
 
 
 
     </head>
     <body>
-        <nav>
              <ul class="mainbar">
                 <li class="bartext"><a href="/about/">About Us</a></li>
-                <li class="bartext"><a href="/shop/" class = "dropbtn" >Product</a>
-                <!-- onclick= "drpdwn()"    
-                <div class = "dropdown-content" id = "myDropdown">
-                        <a href="sales.html">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div> -->
-                    </li> 
+                <li class="dropdown"><a href="/shop/" class="dropbtn" >Product</a>
+                <!-- onclick= "drpdwn()" -->   
+                <div class="dropdown-content" >
+                        <a href="/shop/RPG">RPG</a>
+                        <a href="/shop/Board Game">Board Game</a>
+                        <a href="/shop/Fantasy">Fantasy</a>
+                        <a href="/shop/Strategy">Strategy</a>
+                        <a href="/shop/Action">Action</a>
+                        <a href="/shop/Adventure">Adventure</a>
+                        <a href="/shop/Casual">Casual</a>
+                        <a href="/shop/Indie">Indie</a>
+                        <a href="/shop/Racing">Racing</a>
+                        <a href="/shop/Simulation">Simulation</a>
+                        <a href="/shop/Sports">Sports</a>
+                        <a href="/shop/Massively Multiplayer">Massively Multiplayer</a>
+                    </div> 
+                </li> 
                 <li class="bartext"><a href="/">Home</a></li>
                 <li class="logo"><a href="/"><img src= "{% static 'images/logo.png' %}" alt="logo" height = "20"/></a></li>
             </ul>
-            <script>
-                function drpdwn(){
-                    document.getElementById("myDropdown").classList.toggle("show");
-                }
-                
-                window.onclick = function(e){
-                    if (!e.target.matches('.dropbtn')){
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        for (var d = 0; d < dropdowns.length; d++){
-                            var openDropdown = dropdowns[d];
-                            if(openDropdown.classList.contains('show')){
-                                openDropdown.classList.remove('show');
-                            }
-                        }
-                    }
-                }
-            </script>
-        </nav>
+
         <main>
             {% block main %} Home {% endblock %}
         </main>

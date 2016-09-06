@@ -5,10 +5,13 @@
 <style>
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-	width: 100%;
 	margin: auto;
-	height: 50%;
+	width: auto;
+  	height: 225px;
+  	max-height: 225px;
 }
+
+
 
 .left.carousel-control, .right.carousel-control
 {
@@ -25,6 +28,18 @@
     margin-right:auto;
     width:1200px;
 }
+.carouseltext
+{
+	position: absolute;
+	top: 90%; 
+   left: 90%; 
+   	margin-left:auto;
+    margin-right:auto;
+   color: white;
+   background-color: black;
+}
+
+
 </style>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -41,13 +56,19 @@
   <div class="carousel-inner" role="listbox">
   	<div class="item active">
   			{% with view.firstitem.productimage_set.all|first as image %}
-      		<img src="{{ image.image.url }}" alt="{{view.firstitem.name}}" height=400 width=400>
+  			<a href="{%url 'shop:productview' image.id %}">
+      		<img src="{{ image.image.url }}" alt="{{view.firstitem.name}}" height="400" width="400">
+      		</a>
+      		<span class="carouseltext"> ${{view.firstitem.price}} </span>
       		{% endwith %}
    	</div>
   	{% for i in view.carousel %}
   	    <div class="item">
   	    	{% with i.productimage_set.all|first as image %}
-      		<img src="{{ image.image.url }}" alt="{{i.name}}" height=400 width=400>
+  	    	<a href="{%url 'shop:productview' i.id %}">
+      		<img src="{{ image.image.url }}" alt="{{i.name}}" width="400" height="400" >
+      		</a>
+      		<span class="carouseltext"> ${{i.price}} </span>
       		{% endwith %}
     	</div>
   	{% endfor %}
@@ -89,7 +110,7 @@
     <div class="product">
         <!-- Just grabing the first product here  -->
     	{% with product.productimage_set.all|first as image %}
-        <a href="{%url 'shop:productview' product.id %}"><img src="{{ image.image.url }}" width=400/> </a>
+        <a href="{%url 'shop:productview' product.id %}"><img src="{{ image.image.url }}" width="400" height="400"> </a>
         {% endwith %}
         <h5>{{product.name}}</h5>
         <h6>{{product.description}}</h6>
@@ -97,7 +118,7 @@
         <button type="button">Add to Cart</button> 
     </div>
     <div class="product">
-    	<a href=""><img  src="" width=400/> </a>
+    	<a href=""><img  src="" width="400" height="400"> </a>
     	<h5> name </h5>
     	<h6> description </h6>
     	<h6> price </h6>

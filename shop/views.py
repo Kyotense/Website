@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Product
+from .models import Product, Category
 
 class ShopView(generic.ListView):
     '''
@@ -20,21 +20,28 @@ class ShopView(generic.ListView):
     numitems = 6 # number of items to throw on the page
     def pages(self):
       """Returns the maximum possible number of pages."""
-      return int(len(Product.objects.all())/self.numitems) + 1
+      items = Product.objects.all()
+      if "category" in self.kwargs:
+        items = Product.objects.filter(category__name__contains=self.kwargs["category"])#[start:end]
+      else:
+        items = Product.objects#[start:end]
+      return int(len(items.all())/self.numitems) + 1
     def previous(self):
-      page = 0
+      page = 1
       if self.request.GET.get("page"):
         page = int(self.request.GET.get("page"))
       if page != None and page > 1:
           page -= 1
       return page
     def current(self):
-      page = 0
+      page = 1
       if self.request.GET.get("page"):
+        print ("PAGE")
+        print (page)
         page = int(self.request.GET.get("page"))
       return page
     def next(self):
-      page = 0
+      page = 1
       if self.request.GET.get("page"):
         page = int(self.request.GET.get("page"))
       if page != None and page < self.pages():
@@ -82,7 +89,17 @@ class ShopView(generic.ListView):
        		end = self.numitems * page
       	# urls view can be used for args and kwargs...
         #print (self.username)
-        return Product.objects.order_by(order_by)[start:end] #filter(pub_date__lte=timezone.now())
+        print (self.kwargs)
+        if "category" in self.kwargs:
+          return Product.objects.order_by(order_by).filter(category__name__contains=self.kwargs["category"])[start:end]
+        else:
+          return Product.objects.order_by(order_by)[start:end] #filter(pub_date__lte=timezone.now())
+
+    # Not necessary
+    def get_context_data(self, **kwargs):
+        context = super(ShopView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
 class ProductView(generic.DetailView):
   context_object_name = "product"

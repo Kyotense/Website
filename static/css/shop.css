@@ -31,7 +31,7 @@ a.pagelink
     text-decoration: none;
 }
 
-div.pagination a:hover{
+div.pagination {
     background-color:#333;
 }
 
@@ -57,7 +57,7 @@ div.pagination a:hover{
 .pagelink-disabled
 {
 	background-color: #000;
-	color:gray;
+	color: gray;
 	padding: 7px 8px;
     text-decoration: none;
 }
